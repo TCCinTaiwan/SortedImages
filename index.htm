@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photo Sorting App</title>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div>
+      <h2>圖片清單</h2>
+      <input type="file" multiple v-if="phase === 'upload'" @change="handleUpload">
+      <div v-if="photos.length >= 1" class="photo-row" id="photos">
+        <div class="photo-cell" v-for="(photo, index) in photos" :key="index">
+          <div class="tag">{{ index + 1 }}.</div>
+          <div class="delete" @click="deletePhoto(index)">X</div>
+          <img :src="photo.src" alt="圖片清單">
+        </div>
+      </div>
+      <button v-if="phase === 'upload' && photos.length >= 1" @click="clearPhotos">清空</button>
+      <hr />
+      <div>
+        <button v-if="phase === 'upload' && photos.length >= 1" @click="sortPhotos">排序</button>
+        <template v-if="showChooseDialog">
+          <div>
+            <div class="photo-row">
+              <div class="photo-cell">
+                <img :src="leftImage.src" alt="左邊的圖片">
+                <button @click="chooseLeft">選擇</button>
+              </div>
+              <div class="photo-cell">
+                <img :src="rightImage.src" alt="右邊的圖片">
+                <button @click="chooseRight">選擇</button>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div>
+      <h2>排序後的圖片</h2>
+      <div class="photo-row" id="photoList">
+        <div class="photo-cell" v-for="(photo, index) in sortedPhotos" :key="index">
+          <div class="tag">{{ index + 1 }}.</div>
+          <img :src="photo.src" alt="排序後的圖片">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

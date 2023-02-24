@@ -1,0 +1,45 @@
+.photo-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* 添加距離 */
+}
+
+.photo-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* 將父元素設為相對定位 */
+}
+
+.tag {
+  color: blue;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 20px;
+  position: absolute; /* 設為絕對定位 */
+  top: 5px;
+  left: 5px;
+  text-shadow: 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+}
+
+.delete {
+  color: red;
+  font-size: 20px;
+  position: absolute; /* 設為絕對定位 */
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.photo-cell img {
+  width: 200px;
+  max-width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background-color: #FFF8E7; /* 宇宙拿鐵色 */
+}
+
+button {
+  margin-top: 10px;
+}
